@@ -1,0 +1,19 @@
+{
+	"name": "idul-fitri-card",
+	"version": "1.0.0",
+	"description": "",
+	"type": "commonjs",
+	"main": "index.js",
+	"scripts": {
+		"dev": "npx tailwindcss -i ./src/css/config.css -o ./src/css/style.css --watch"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"tailwindcss": "^3.0.24"
+	},
+	"dependencies": {
+		"html-to-image": "^1.9.0"
+	}
+}

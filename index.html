@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BengakCard</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="src/css/style.css" />
+	</head>
+	<body class="font-poppins">
+		<div class="container mx-auto bg-sky-300 p-5 sm:bg-emerald-400 md:bg-yellow-300 lg:bg-rose-400 xl:bg-green-400 lg:max-w-5xl lg:max-h-screen overflow-hidden lg:flex lg:gap-10 xl:max-w-7xl lg:p-10">
+			<div class="bg-violet-500 mb-5 lg:mb-0 lg:order-2 lg:w-9/12 lg:self-center">
+				<div class="shadow-lg aspect-video relative text-white ring-1 ring-violet-400 lg:mb-10" id="cardcanvas">
+					<img draggable="false" id="outputimage" src="src/img/bg-test.jpg" alt="Gambar" class="w-full h-full object-cover object-center" />
+					<div class="blend bg-blend-multiply absolute z-10 inset-0" id="blendelement"></div>
+					<div class="bg-rose-500 absolute top-1/2 -translate-y-1/2 inset-x-0 z-20 -mt-2.5 px-3 tracking-wider text-center">
+						<div class="bg-teal-300 mb-1.5 text-xs" id="outputmessage"></div>
+						<div class="bg-lime-400 text-xs">~ <span id="outputname"></span> ~</div>
+					</div>
+					<span class="absolute z-20 right-2 bottom-2 text-smallest">Generate by BengakCard</span>
+				</div>
+
+				<div class="hidden lg:flex lg:justify-evenly lg:bg-lime-400">
+					<a class="px-3 py-2 bg-rose-300 rounded-md shadow-sm mx-auto transition-all duration-300 hover:bg-rose-500 hover:shadow-lg hover:text-white cursor-pointer" id="buttondownload">Download</a>
+					<a class="px-3 py-2 bg-rose-300 rounded-md shadow-sm mx-auto transition-all duration-300 hover:bg-rose-500 hover:shadow-lg hover:text-white cursor-pointer" id="buttonreset">Reset</a>
+				</div>
+			</div>
+
+			<div class="bg-violet-400 lg:order-1 lg:w-3/12 lg:max-h-full lg:overflow-auto">
+				<div class="flex justify-evenly bg-lime-400 mb-5 lg:hidden">
+					<a class="px-3 py-2 bg-rose-300 rounded-md shadow-sm mx-auto transition-all duration-300 hover:bg-rose-500 hover:shadow-lg hover:text-white cursor-pointer" id="buttondownload">Download</a>
+					<a class="px-3 py-2 bg-rose-300 rounded-md shadow-sm mx-auto transition-all duration-300 hover:bg-rose-500 hover:shadow-lg hover:text-white cursor-pointer" id="buttonreset">Reset</a>
+				</div>
+				<div class="w-full mx-auto p-3 rounded-md shadow-lg mb-5 bg-lime-400">
+					<label for="name">
+						<span class="text-base block m-1 font-semibold">Name</span>
+						<input
+							class="w-full px-3 py-2 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 placeholder:text-sm"
+							type="text"
+							id="name"
+							placeholder="Input your name in here"
+							size="30"
+							max="30"
+							maxlength="30"
+							autofocus
+						/>
+						<span class="text-red-500 text-sm m-1 hidden" id="namealert"></span>
+					</label>
+				</div>
+
+				<div class="w-full mx-auto p-3 rounded-md shadow-lg mb-5 bg-lime-400">
+					<label for="messagetext">
+						<span class="text-base block m-1 font-semibold">Message</span>
+						<textarea maxlength="220" id="messagetext" class="w-full h-28 px-3 py-2 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-400"></textarea>
+						<span class="text-red-500 text-sm m-1 hidden" id="messagetextalert"></span>
+					</label>
+				</div>
+
+				<div class="w-full mx-auto p-3 rounded-md shadow-lg mb-5 bg-lime-400">
+					<label for="messagelist">
+						<span class="text-base block m-1 font-semibold">Message List</span>
+						<div class="relative">
+							<select id="messagelist" class="w-full px-3 py-2 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 appearance-none">
+								<option value="default" selected>Default</option>
+								<option value="indonesia">Indonesia</option>
+								<option value="english">English</option>
+								<option value="arab">Arab</option>
+								<option value="jepang">Jepang</option>
+							</select>
+							<div class="pointer-events-none absolute right-0 flex inset-y-0 items-center px-2 text-gray-700 font-semibold">
+								<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+							</div>
+						</div>
+					</label>
+				</div>
+
+				<div class="w-full mx-auto p-3 rounded-md shadow-lg mb-5 bg-lime-400">
+					<label for="opacity">
+						<span class="text-base block m-1 font-semibold">Blend Opacity</span>
+						<input
+							class="w-full px-3 py-2 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 placeholder:text-sm appearance-none"
+							type="number"
+							min="0"
+							max="1"
+							step="0.1"
+							id="opacity"
+							placeholder="Input blend opacity in here"
+						/>
+						<span class="text-red-500 text-sm m-1 hidden" id="opacityalert"></span>
+					</label>
+				</div>
+
+				<div class="w-full mx-auto p-3 rounded-md shadow-lg mb-5 bg-lime-400 flex justify-evenly gap-10">
+					<div class="w-1/2">
+						<label for="textcolor">
+							<span class="text-base block m-1 font-semibold">Text Color</span>
+							<input class="w-full px-3 py-2 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 placeholder:text-sm" type="color" id="textcolor" />
+						</label>
+					</div>
+					<div class="w-1/2">
+						<label for="blendcolor">
+							<span class="text-base block m-1 font-semibold">Blend Color</span>
+							<input class="w-full px-3 py-2 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 placeholder:text-sm" type="color" id="blendcolor" />
+						</label>
+					</div>
+				</div>
+
+				<div class="w-full mx-auto p-3 rounded-md shadow-lg mb-5 bg-lime-400">
+					<label for="inputimage">
+						<span class="text-base block m-1 font-semibold">Background Image</span>
+						<div class="relative">
+							<select id="inputimage" class="w-full px-3 py-2 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 appearance-none">
+								<option value="default" selected>Default</option>
+								<option value="bg1">Background 1</option>
+								<option value="bg2">Background 2</option>
+								<option value="random">Random</option>
+								<option value="custom">Custom</option>
+							</select>
+							<div class="pointer-events-none absolute right-0 flex inset-y-0 items-center px-2 text-gray-700 font-semibold">
+								<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+							</div>
+						</div>
+					</label>
+
+					<div class="hidden mt-3" id="divbuttonrandom">
+						<a class="px-3 py-2 bg-rose-300 rounded-md shadow-sm mx-auto transition-all duration-300 hover:bg-rose-500 hover:shadow-lg hover:text-white cursor-pointer" id="buttonrandomphoto">Click to get random photo</a>
+					</div>
+
+					<div class="hidden mt-3" id="divuploadimage">
+						<label class="block ring-1 ring-violet-400 rounded-full shadow-lg">
+							<span class="sr-only">Choose background photo</span>
+							<input
+								type="file"
+								accept="image/x-png,image/gif,image/jpeg"
+								class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+							/>
+						</label>
+					</div>
+				</div>
+
+				<div class="w-full mx-auto p-3 rounded-md shadow-lg mb-5 bg-lime-400">
+					<label for="inputfont">
+						<span class="text-base block m-1 font-semibold">Font Family</span>
+						<div class="relative">
+							<select id="inputfont" class="w-full px-3 py-2 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 appearance-none">
+								<option value="default" selected>Default (Poppins)</option>
+								<option value="itim">Itim</option>
+								<option value="cookie">Cookie</option>
+								<option value="dancing">Dancing</option>
+								<option value="kalam">Kalam</option>
+								<option value="merienda">Merienda</option>
+							</select>
+							<div class="pointer-events-none absolute right-0 flex inset-y-0 items-center px-2 text-gray-700 font-semibold">
+								<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+							</div>
+						</div>
+					</label>
+				</div>
+			</div>
+		</div>
+		<script src="src/js/html2canvas.min.js"></script>
+		<script src="src/js/script.js"></script>
+		<script></script>
+	</body>
+</html>
