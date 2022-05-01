@@ -5,7 +5,7 @@
 	"type": "commonjs",
 	"main": "index.js",
 	"scripts": {
-		"dev": "npx tailwindcss -i ./src/css/config.css -o ./src/css/style.css --watch"
+		"bengakdev": "npx tailwindcss -i ./src/css/config.css -o ./src/css/style.css --watch"
 	},
 	"keywords": [],
 	"author": "",

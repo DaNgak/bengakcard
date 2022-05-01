@@ -2,12 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	::-webkit-scrollbar {
+		-webkit-appearance: none;
+		@apply w-[5px] h-0;
+	}
+
+	::-webkit-scrollbar-track {
+		@apply bg-transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		@apply bg-violet-400 rounded-lg transition-all duration-200 ease-in-out;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		@apply bg-violet-600;
+	}
+}
+
 @layer components {
+	.bengak-button {
+		@apply px-3 py-2 text-white bg-violet-400 rounded-md shadow-none mx-auto transition-all duration-300 hover:bg-violet-600 hover:shadow-xl hover:ring-2 hover:ring-violet-400 hover:cursor-pointer hover:scale-105;
+	}
+
+	.bengak-input-parent {
+		@apply w-full mx-auto p-3 rounded-md shadow mb-5 border border-violet-400 hover:shadow-lg;
+	}
+
+	.bengak-input {
+		@apply w-full px-3 py-2 rounded-md shadow-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-400;
+	}
+
+	.bengak-input-alert {
+		@apply text-red-500 text-sm m-1;
+	}
+
+	.bengak-input-label {
+		@apply text-base block m-1 font-semibold;
+	}
+
+	.bengak-select-appearance {
+		@apply pointer-events-none absolute right-0 flex inset-y-0 items-center px-2 text-gray-700 font-semibold;
+	}
+
+	.bengak-canvas {
+		@apply aspect-video shadow-xl text-white ring-1 ring-violet-400;
+	}
 }
 
 @layer utilities {
+	.text-2.5xl {
+		@apply text-screen-large;
+		line-height: 2.2 rem;
+	}
 }
 
-.block {
-	display: block;
+@media only screen and (min-width: 1024px) {
+	.display-large-button {
+		display: flex !important;
+		justify-content: evenly;
+	}
 }
