@@ -10,7 +10,7 @@ window.onscroll = function () {
 	}
 };
 
-// Hamburger Nanbar
+// Hamburger Navbar
 const hamburgerbutton = document.querySelector("#hamburgerbutton");
 const hamburgermenu = document.querySelector("#hamburgermenu");
 

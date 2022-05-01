@@ -37,6 +37,10 @@ const buttonresetsmscreen = document.querySelector("#buttonresetsmscreen");
 // Div element
 const divUploadImage = document.querySelector("#divuploadimage");
 
+// Hamburger Menu
+const hamburgerbutton = document.querySelector("#hamburgerbutton");
+const hamburgermenu = document.querySelector("#hamburgermenu");
+
 // Validate File
 let arrayFileValidate = ["png", "jpg", "jpeg", "jfif", "svg"];
 
@@ -49,10 +53,22 @@ function init() {
 			outputname.innerText = baseReloadPage.name;
 			inputmessage.value = baseReloadPage.message;
 			outputmessage.innerText = baseReloadPage.message;
-			inputtextcolor.value = baseReloadPage.textColor;
+			inputmessagelist.value = baseReloadPage.messageList;
 			inputblendopacity.value = baseReloadPage.blendopacity;
-			blendElement.style.backgroundColor = baseReloadPage.blendColor;
 			blendElement.style.opacity = baseReloadPage.blendopacity;
+			inputtextcolor.value = baseReloadPage.textColor;
+			cardcanvas.style.color = baseReloadPage.textColor;
+			inputblendcolor.value = baseReloadPage.blendColor;
+			blendElement.style.backgroundColor = baseReloadPage.blendColor;
+			inputimage.value = baseReloadPage.imageInput;
+			outputimage.src = baseReloadPage.backgroundImage;
+			inputfont.value = baseReloadPage.fontInput;
+			cardcanvas.style.fontFamily = baseReloadPage.font;
+			if (!hamburgermenu.classList.contains("hidden")) {
+				hamburgerbutton.click();
+			}
+			divUploadImage.classList.add("hidden");
+			hamburgermenu.classList.add("hidden");
 		})
 		.catch((error) => console.log(error));
 }
