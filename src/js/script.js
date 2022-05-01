@@ -32,6 +32,7 @@ const inputimagecustomalert = document.querySelector("#inputimagecustomalert");
 
 // Button
 const buttonreset = document.querySelector("#buttonreset");
+const buttonresetsmscreen = document.querySelector("#buttonresetsmscreen");
 
 // Div element
 const divUploadImage = document.querySelector("#divuploadimage");
@@ -54,6 +55,14 @@ function init() {
 			blendElement.style.opacity = baseReloadPage.blendopacity;
 		})
 		.catch((error) => console.log(error));
+}
+
+function reset() {
+	init();
+	utility.hiddenAlertElement(namealert);
+	utility.hiddenAlertElement(blendopacityalert);
+	utility.hiddenAlertElement(messagetextalert);
+	utility.hiddenAlertElement(inputimagecustomalert);
 }
 
 // Init function
@@ -199,10 +208,6 @@ inputfont.addEventListener("change", function () {
 });
 
 // Reset Button
-buttonreset.onclick = function () {
-	init();
-	utility.hiddenAlertElement(namealert);
-	utility.hiddenAlertElement(blendopacityalert);
-	utility.hiddenAlertElement(messagetextalert);
-	utility.hiddenAlertElement(inputimagecustomalert);
-};
+buttonreset.onclick = reset;
+
+buttonresetsmscreen.onclick = reset;

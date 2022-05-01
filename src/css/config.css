@@ -49,12 +49,20 @@
 	.bengak-canvas {
 		@apply aspect-video shadow-xl text-white ring-1 ring-violet-400;
 	}
+
+	.bengak-navlink-item {
+		@apply block text-base text-black py-3 px-4 transition-all duration-300;
+	}
 }
 
 @layer utilities {
 	.text-2.5xl {
 		@apply text-screen-large;
 		line-height: 2.2 rem;
+	}
+
+	.hamburger-line {
+		@apply w-[30px] h-[2px] my-2 block bg-white rounded-md;
 	}
 }
 
@@ -63,4 +71,16 @@
 		display: flex !important;
 		justify-content: evenly;
 	}
+}
+
+.hamburger-active > span:nth-child(1) {
+	@apply -rotate-45;
+}
+
+.hamburger-active > span:nth-child(2) {
+	@apply scale-0;
+}
+
+.hamburger-active > span:nth-child(3) {
+	@apply rotate-45;
 }
